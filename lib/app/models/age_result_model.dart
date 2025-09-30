@@ -1,6 +1,4 @@
 
-
-
 class AgeResultModel {
   final int years, months, days, hours, minutes, seconds;
   AgeResultModel({
@@ -13,7 +11,7 @@ class AgeResultModel {
   });
 
   int get totalMonths => years * 12 + months;
-  int get totalDays => ((years * 365) + (months * 30) + days); // approximate
+  int get totalDays => ((years * 365) + (months * 30) + days);
   int get totalHours => totalDays * 24 + hours;
   int get totalMinutes => totalHours * 60 + minutes;
   int get totalSeconds => totalMinutes * 60 + seconds;
