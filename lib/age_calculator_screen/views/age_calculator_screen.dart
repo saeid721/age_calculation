@@ -30,10 +30,11 @@ class AgeCalculatorScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(height: 15),
               Center(
                 child: Image.asset(
                   "assets/images/family.png",
-                  height: 180,
+                  height: 150,
                   width: Get.width,
                   fit: BoxFit.cover,
                 ),
@@ -95,8 +96,7 @@ class AgeCalculatorScreen extends StatelessWidget {
                       Icon(Icons.calculate, color: Color(0xFF607D8B)),
                       SizedBox(width: 10),
                       Text("Calculate Age",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF607D8B))),
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF607D8B))),
                     ],
                   ),
                 ),
@@ -118,28 +118,49 @@ class AgeCalculatorScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text('Your Age',
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500, color: Color(0xFF607D8B))),
-                              const SizedBox(height: 8),
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                      'Birth Date : ${DateFormat('dd-MM-yyyy').format(ageController.dateOfBirth)}'),
-                                  Text(
-                                      'Current Date : ${DateFormat('dd-MM-yyyy').format(ageController.currentDate)}'),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
+                              // Text('Your Age',
+                              //     style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xFF607D8B))),
+                              // const SizedBox(height: 8),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     RichText(
+                              //       text: TextSpan(
+                              //         style: TextStyle(color: Colors.black, fontSize: 16),
+                              //         children: [
+                              //           TextSpan(
+                              //             text: 'Birth Date: ',
+                              //             style: TextStyle(fontWeight: FontWeight.w500),
+                              //           ),
+                              //           TextSpan(
+                              //             text: DateFormat('dd-MM-yyyy').format(ageController.dateOfBirth),
+                              //             style: TextStyle(fontWeight: FontWeight.normal),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //     RichText(
+                              //       text: TextSpan(
+                              //         style: TextStyle(color: Colors.black, fontSize: 16),
+                              //         children: [
+                              //           TextSpan(
+                              //             text: 'Current Date: ',
+                              //             style: TextStyle(fontWeight: FontWeight.w500),
+                              //           ),
+                              //           TextSpan(
+                              //             text: DateFormat('dd-MM-yyyy').format(ageController.currentDate),
+                              //             style: TextStyle(fontWeight: FontWeight.normal),
+                              //           ),
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+                              //
+                              // const SizedBox(height: 12),
                               Center(
-                                child: Text(
-                                  '${ageController.age!.years} years  ${ageController.age!.months} months  ${ageController.age!.days} days',
-                                  style: const TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w600),
+                                child: Text('${ageController.age!.years} years  ${ageController.age!.months} months  ${ageController.age!.days} days',
+                                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                                 ),
                               ),
                               const Divider(),
@@ -148,54 +169,37 @@ class AgeCalculatorScreen extends StatelessWidget {
                                   minVerticalPadding: 0,
                                   title: const Text('Total Years'),
                                   trailing: Text('${ageController.age!.years}',
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500))),
+                                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
                                   minVerticalPadding: 0,
                                   title: const Text('Total Months'),
-                                  trailing:
-                                  Text('${ageController.age!.totalMonths}',
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500))),
+                                  trailing: Text('${ageController.age!.totalMonths}',
+                                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
                                   minVerticalPadding: 0,
                                   title: const Text('Total Days (approx)'),
-                                  trailing:
-                                  Text('${ageController.age!.totalDays}',
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500))),
+                                  trailing: Text('${ageController.age!.totalDays}',
+                                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
                                   minVerticalPadding: 0,
                                   title: const Text('Total Hours'),
-                                  trailing:
-                                  Text('${ageController.age!.totalHours}',
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500))),
+                                  trailing: Text('${ageController.age!.totalHours}',
+                                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
                                   minVerticalPadding: 0,
                                   title: const Text('Total Minutes'),
-                                  trailing:
-                                  Text('${ageController.age!.totalMinutes}',
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500))),
+                                  trailing: Text('${ageController.age!.totalMinutes}',
+                                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
                                   minVerticalPadding: 0,
                                   title: const Text('Total Seconds'),
-                                  trailing:
-                                  Text('${ageController.age!.totalSeconds}',
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500))),
+                                  trailing: Text('${ageController.age!.totalSeconds}',
+                                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
                               ListTile(
                                 minTileHeight: 16,
                                 title: const Text('Live Ticking'),
@@ -203,9 +207,7 @@ class AgeCalculatorScreen extends StatelessWidget {
                                   '${ageController.age!.hours.toString().padLeft(2, '0')} : '
                                       '${ageController.age!.minutes.toString().padLeft(2, '0')} : '
                                       '${ageController.age!.seconds.toString().padLeft(2, '0')}',
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ],
@@ -250,13 +252,31 @@ class AgeCalculatorScreen extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Row(
         children: [
+          // Expanded(
+          //   child: Text(
+          //     //"$title\n${DateFormat('dd-MM-yyyy EEEE').format(date)}",
+          //     "$title: ${DateFormat('dd-MM-yyyy').format(date)}",
+          //     style: const TextStyle(fontSize: 16),
+          //   ),
+          // ),
           Expanded(
-            child: Text(
-              //"$title\n${DateFormat('dd-MM-yyyy EEEE').format(date)}",
-              "$title: ${DateFormat('dd-MM-yyyy').format(date)}",
-              style: const TextStyle(fontSize: 16),
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(fontSize: 16, color: Colors.black),
+                children: [
+                  TextSpan(
+                    text: "$title: ",
+                    style: const TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  TextSpan(
+                    text: DateFormat('dd-MM-yyyy').format(date),
+                    style: const TextStyle(fontWeight: FontWeight.normal),
+                  ),
+                ],
+              ),
             ),
           ),
+
           NeumorphicButton(
             onPressed: onTap,
             style: const NeumorphicStyle(
@@ -265,7 +285,7 @@ class AgeCalculatorScreen extends StatelessWidget {
               depth: 4,
             ),
             padding: const EdgeInsets.all(8),
-            child: const Icon(Icons.calendar_today, size: 20),
+            child: const Icon(Icons.calendar_today, color: Color(0xFF607D8B), size: 20),
           ),
         ],
       ),
