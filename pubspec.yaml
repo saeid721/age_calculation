@@ -1,5 +1,5 @@
 name: age_calculation
-description: A Neumorphism Age Calculator app using GetX, MVC, responsive design, localization, and tests.
+description: A Neumorphism Age Calculator age_calculator_screen using GetX, MVC, responsive design, localization, and tests.
 publish_to: "none"
 version: 1.0.1
 
@@ -9,14 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   get: ^4.7.2
-  flutter_localizations:
-    sdk: flutter
   intl: ^0.20.2
   shared_preferences: ^2.5.3
-  path_provider: ^2.1.5
-  share_plus: ^12.0.0
-  screenshot: ^3.0.0
   flutter_neumorphic_plus: ^3.5.0
 
 dev_dependencies:

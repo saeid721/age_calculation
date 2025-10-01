@@ -16,7 +16,7 @@ subprojects {
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
 subprojects {
-    project.evaluationDependsOn(":app")
+    project.evaluationDependsOn(":age_calculator_screen")
 }
 
 tasks.register<Delete>("clean") {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'app/bindings/initial_binding.dart';
-import 'app/routes/app_routes.dart';
+import 'age_calculator_screen/controllers/age_controller.dart';
+import 'age_calculator_screen/views/age_calculator_screen.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AppBindings.initServices();
+  Get.put(AgeController());
   runApp(const AgeApp());
 }
 
@@ -17,11 +17,7 @@ class AgeApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Age Calculator',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.initial,
-      getPages: AppPages.routes,
-      initialBinding: AppBindings(),
-      // translations: AppTranslations(),
-      // theme: AppTheme.lightTheme,
+      home: const AgeCalculatorScreen(),
     );
   }
 }

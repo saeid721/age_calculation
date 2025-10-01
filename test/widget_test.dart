@@ -12,7 +12,7 @@ import 'package:age_calculation/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+    // Build our age_calculator_screen and trigger a frame.
     await tester.pumpWidget(const AgeApp());
 
     // Verify that our counter starts at 0.

@@ -7,8 +7,6 @@ class AgeController extends GetxController {
   DateTime dateOfBirth = DateTime(1993, 10, 20);
 
   AgeModel? age;
-
-  // ✅ Flag for showing result
   bool showResult = false;
 
   Timer? _timer;
@@ -83,10 +81,7 @@ class AgeController extends GetxController {
     );
 
     showResult = true;
-
-    // ✅ Calculate button
     _startLiveTick();
-
     update();
   }
 
@@ -103,11 +98,4 @@ class AgeController extends GetxController {
     _timer?.cancel();
     super.onClose();
   }
-}
-
-class RecentItem {
-  final String? label;
-  final DateTime dateTime;
-
-  RecentItem({this.label, required this.dateTime});
 }
