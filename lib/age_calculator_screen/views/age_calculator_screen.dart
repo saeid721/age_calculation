@@ -203,6 +203,7 @@ class AgeCalculatorScreen extends StatelessWidget {
                               ListTile(
                                 minTileHeight: 16,
                                 title: const Text('Live Ticking'),
+                                minVerticalPadding: 0,
                                 trailing: Text(
                                   '${ageController.age!.hours.toString().padLeft(2, '0')} : '
                                       '${ageController.age!.minutes.toString().padLeft(2, '0')} : '
@@ -214,7 +215,7 @@ class AgeCalculatorScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 20),
 
                       // ✅ Next Birthday with H:M:S
                       Neumorphic(
