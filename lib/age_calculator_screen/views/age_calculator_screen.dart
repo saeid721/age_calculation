@@ -30,13 +30,13 @@ class AgeCalculatorScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 15),
+              const SizedBox(height: 10),
               Center(
                 child: Image.asset(
                   "assets/images/family.png",
-                  height: 150,
+                  height: 168,
                   width: Get.width,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
               const Text(
@@ -44,7 +44,7 @@ class AgeCalculatorScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xFF607D8B)),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
 
               // Current Date Picker
               _dateTile(
@@ -104,7 +104,7 @@ class AgeCalculatorScreen extends StatelessWidget {
 
               // Result
               if (ageController.showResult) ...[
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 if (ageController.age == null)
                   Text('Invalid: DOB is after Current Date!',
                       style: Get.textTheme.headlineSmall)
@@ -215,7 +215,7 @@ class AgeCalculatorScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 15),
 
                       // ✅ Next Birthday with H:M:S
                       Neumorphic(
