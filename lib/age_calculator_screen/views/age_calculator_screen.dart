@@ -34,8 +34,8 @@ class AgeCalculatorScreen extends StatelessWidget {
               Center(
                 child: Image.asset(
                   "assets/images/family.png",
-                  height: 168,
-                  width: Get.width,
+                  height: 170,
+                  width: MediaQuery.of(context).size.width,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -119,42 +119,42 @@ class AgeCalculatorScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               // Text('Your Age',
-                              //     style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xFF607D8B))),
-                              // const SizedBox(height: 8),
+                              //     style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xFF607D8B))),\
+                              // const SizedBox(height: 8),\
                               // Row(
-                              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,\
                               //   children: [
                               //     RichText(
                               //       text: TextSpan(
-                              //         style: TextStyle(color: Colors.black, fontSize: 16),
+                              //         style: TextStyle(color: Colors.black, fontSize: 16),\
                               //         children: [
                               //           TextSpan(
-                              //             text: 'Birth Date: ',
-                              //             style: TextStyle(fontWeight: FontWeight.w500),
+                              //             text: \'Birth Date: \',
+                              //             style: TextStyle(fontWeight: FontWeight.w500),\
                               //           ),
                               //           TextSpan(
-                              //             text: DateFormat('dd-MM-yyyy').format(ageController.dateOfBirth),
-                              //             style: TextStyle(fontWeight: FontWeight.normal),
+                              //             text: DateFormat(\'dd-MM-yyyy\').format(ageController.dateOfBirth),\
+                              //             style: TextStyle(fontWeight: FontWeight.normal),\
                               //           ),
-                              //         ],
-                              //       ),
-                              //     ),
+                              //         ],\
+                              //       ),\
+                              //     ),\
                               //     RichText(
                               //       text: TextSpan(
-                              //         style: TextStyle(color: Colors.black, fontSize: 16),
+                              //         style: TextStyle(color: Colors.black, fontSize: 16),\
                               //         children: [
                               //           TextSpan(
-                              //             text: 'Current Date: ',
-                              //             style: TextStyle(fontWeight: FontWeight.w500),
+                              //             text: \'Current Date: \',
+                              //             style: TextStyle(fontWeight: FontWeight.w500),\
                               //           ),
                               //           TextSpan(
-                              //             text: DateFormat('dd-MM-yyyy').format(ageController.currentDate),
-                              //             style: TextStyle(fontWeight: FontWeight.normal),
+                              //             text: DateFormat(\'dd-MM-yyyy\').format(ageController.currentDate),\
+                              //             style: TextStyle(fontWeight: FontWeight.normal),\
                               //           ),
-                              //         ],
-                              //       ),
-                              //     ),
-                              //   ],
+                              //         ],\
+                              //       ),\
+                              //     ),\
+                              //   ],\
                               // ),
                               //
                               // const SizedBox(height: 12),
@@ -226,7 +226,7 @@ class AgeCalculatorScreen extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 15),
                     ],
                   ),
               ],
@@ -255,7 +255,7 @@ class AgeCalculatorScreen extends StatelessWidget {
         children: [
           // Expanded(
           //   child: Text(
-          //     //"$title\n${DateFormat('dd-MM-yyyy EEEE').format(date)}",
+          //     //"$title\\n${DateFormat('dd-MM-yyyy EEEE').format(date)}",
           //     "$title: ${DateFormat('dd-MM-yyyy').format(date)}",
           //     style: const TextStyle(fontSize: 16),
           //   ),
