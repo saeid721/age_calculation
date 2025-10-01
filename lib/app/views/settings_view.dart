@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import '../controllers/age_controller.dart';
 import '../controllers/home_controller.dart';
 
 class SettingsView extends StatelessWidget {
@@ -8,8 +9,7 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      builder: (c) {
+    return GetBuilder<AgeController>(builder: (ageController) {
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(60),
@@ -28,28 +28,6 @@ class SettingsView extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                Neumorphic(
-                  style: const NeumorphicStyle(depth: 4),
-                  child: ListTile(
-                    title: const Text('Live ticking'),
-                    trailing: NeumorphicSwitch(
-                      value: c.live,
-                      onChanged: c.toggleLive,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Neumorphic(
-                  style: const NeumorphicStyle(depth: 4),
-                  child: ListTile(
-                    title: const Text('Show seconds'),
-                    trailing: NeumorphicSwitch(
-                      value: c.includeSeconds,
-                      onChanged: c.setIncludeSeconds,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
                 Neumorphic(
                   style: const NeumorphicStyle(depth: 4),
                   child: ListTile(

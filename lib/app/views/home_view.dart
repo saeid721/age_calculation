@@ -1,6 +1,7 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import '../controllers/age_controller.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/app_drawer.dart';
 
@@ -9,15 +10,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(builder: (homeController) {
+    return GetBuilder<AgeController>(builder: (ageController) {
       return Scaffold(
+        backgroundColor: Color(0xFFDDE6E8),
         //drawer: const CustomDrawer(),
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(60),
+          preferredSize: const Size.fromHeight(56),
           child: Neumorphic(
             style: const NeumorphicStyle(depth: 4),
             child: AppBar(
-              title: const Text('Age Calculator'),
+              title: const Text('Age Calculator', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF607D8B))),
               centerTitle: true,
               elevation: 0,
               backgroundColor: NeumorphicColors.background,
@@ -26,64 +28,63 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
                 child: Image.asset(
                   "assets/images/family.png",
-                  height: 200,
+                  height: 180,
                   width: Get.width,
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(height: 20),
               const Text(
                 "Calculate Your Age",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Color(0xFF607D8B)),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
 
               // Current Date Picker
               _dateTile(
                 title: "Current Date",
-                date: homeController.currentDate,
+                date: ageController.currentDate,
                 onTap: () async {
                   DateTime? picked = await showDatePicker(
                     context: context,
-                    initialDate: homeController.currentDate,
+                    initialDate: ageController.currentDate,
                     firstDate: DateTime(1900),
                     lastDate: DateTime(2100),
                   );
-                  if (picked != null) homeController.setCurrentDate(picked);
+                  if (picked != null) ageController.setCurrentDate(picked);
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
 
               // DOB Picker
               _dateTile(
                 title: "Date of Birth",
-                date: homeController.dateOfBirth,
+                date: ageController.dateOfBirth,
                 onTap: () async {
                   DateTime? picked = await showDatePicker(
                     context: context,
-                    initialDate: homeController.dateOfBirth,
+                    initialDate: ageController.dateOfBirth,
                     firstDate: DateTime(1900),
                     lastDate: DateTime.now(),
                   );
-                  if (picked != null) homeController.setDob(picked);
+                  if (picked != null) ageController.setDob(picked);
                 },
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
               // Calculate Button
               Center(
                 child: NeumorphicButton(
-                  onPressed: homeController.calculateAge,
+                  onPressed: ageController.calculateAge,
                   style: NeumorphicStyle(
-                    color: Colors.blue.shade100,
+                    color: Color(0xB3FFFFFF),
                     boxShape: NeumorphicBoxShape.roundRect(
                       BorderRadius.circular(12),
                     ),
@@ -93,33 +94,20 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
-                      Icon(Icons.calculate, color: Colors.black),
+                      Icon(Icons.calculate, color: Color(0xFF607D8B)),
                       SizedBox(width: 10),
                       Text("Calculate Age",
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold)),
+                              fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF607D8B))),
                     ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-
-              // Settings
-              Neumorphic(
-                style: const NeumorphicStyle(depth: 4),
-                child: ListTile(
-                  title: const Text('Live ticking'),
-                  trailing: NeumorphicSwitch(
-                    value: homeController.live,
-                    onChanged: homeController.toggleLive,
                   ),
                 ),
               ),
 
               // Result
-              if (homeController.showResult) ...[
-                const SizedBox(height: 30),
-                if (homeController.age == null)
+              if (ageController.showResult) ...[
+                const SizedBox(height: 20),
+                if (ageController.age == null)
                   Text('Invalid: DOB is after Current Date!',
                       style: Get.textTheme.headlineSmall)
                 else
@@ -135,82 +123,88 @@ class HomeScreen extends StatelessWidget {
                               Text('Your Age',
                                   style: const TextStyle(
                                       fontSize: 20,
-                                      fontWeight: FontWeight.w500)),
+                                      fontWeight: FontWeight.w500, color: Color(0xFF607D8B))),
                               const SizedBox(height: 8),
                               Row(
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                      'Birth Date : ${DateFormat('dd-MM-yyyy').format(homeController.dateOfBirth)}'),
+                                      'Birth Date : ${DateFormat('dd-MM-yyyy').format(ageController.dateOfBirth)}'),
                                   Text(
-                                      'Current Date : ${DateFormat('dd-MM-yyyy').format(homeController.currentDate)}'),
+                                      'Current Date : ${DateFormat('dd-MM-yyyy').format(ageController.currentDate)}'),
                                 ],
                               ),
                               const SizedBox(height: 12),
                               Center(
                                 child: Text(
-                                  '${homeController.age!.years} years  ${homeController.age!.months} months  ${homeController.age!.days} days',
+                                  '${ageController.age!.years} years  ${ageController.age!.months} months  ${ageController.age!.days} days',
                                   style: const TextStyle(
                                       fontSize: 22,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ),
                               const Divider(),
                               ListTile(
                                   minTileHeight: 16,
+                                  minVerticalPadding: 0,
                                   title: const Text('Total Years'),
-                                  trailing: Text('${homeController.age!.years}',
+                                  trailing: Text('${ageController.age!.years}',
                                       style: const TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.bold))),
+                                          fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
+                                  minVerticalPadding: 0,
                                   title: const Text('Total Months'),
                                   trailing:
-                                  Text('${homeController.age!.totalMonths}',
+                                  Text('${ageController.age!.totalMonths}',
                                       style: const TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.bold))),
+                                          fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
+                                  minVerticalPadding: 0,
                                   title: const Text('Total Days (approx)'),
                                   trailing:
-                                  Text('${homeController.age!.totalDays}',
+                                  Text('${ageController.age!.totalDays}',
                                       style: const TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.bold))),
+                                          fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
+                                  minVerticalPadding: 0,
                                   title: const Text('Total Hours'),
                                   trailing:
-                                  Text('${homeController.age!.totalHours}',
+                                  Text('${ageController.age!.totalHours}',
                                       style: const TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.bold))),
+                                          fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
+                                  minVerticalPadding: 0,
                                   title: const Text('Total Minutes'),
                                   trailing:
-                                  Text('${homeController.age!.totalMinutes}',
+                                  Text('${ageController.age!.totalMinutes}',
                                       style: const TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.bold))),
+                                          fontWeight: FontWeight.w500))),
                               ListTile(
                                   minTileHeight: 16,
+                                  minVerticalPadding: 0,
                                   title: const Text('Total Seconds'),
                                   trailing:
-                                  Text('${homeController.age!.totalSeconds}',
+                                  Text('${ageController.age!.totalSeconds}',
                                       style: const TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.bold))),
+                                          fontWeight: FontWeight.w500))),
                               ListTile(
                                 minTileHeight: 16,
                                 title: const Text('Live Ticking'),
                                 trailing: Text(
-                                  '${homeController.age!.hours.toString().padLeft(2, '0')} : '
-                                      '${homeController.age!.minutes.toString().padLeft(2, '0')} : '
-                                      '${homeController.age!.seconds.toString().padLeft(2, '0')}',
+                                  '${ageController.age!.hours.toString().padLeft(2, '0')} : '
+                                      '${ageController.age!.minutes.toString().padLeft(2, '0')} : '
+                                      '${ageController.age!.seconds.toString().padLeft(2, '0')}',
                                   style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
@@ -227,9 +221,11 @@ class HomeScreen extends StatelessWidget {
                         style: const NeumorphicStyle(depth: 4),
                         child: ListTile(
                           title: const Text('Next Birthday'),
-                          subtitle: Text(_nextBirthdayText(homeController)),
+                          subtitle: Text(_nextBirthdayText(ageController)),
                         ),
                       ),
+
+                      const SizedBox(height: 20),
                     ],
                   ),
               ],
@@ -253,12 +249,13 @@ class HomeScreen extends StatelessWidget {
           BorderRadius.circular(12),
         ),
       ),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(10),
       child: Row(
         children: [
           Expanded(
             child: Text(
-              "$title\n${DateFormat('dd-MM-yyyy EEEE').format(date)}",
+              //"$title\n${DateFormat('dd-MM-yyyy EEEE').format(date)}",
+              "$title: ${DateFormat('dd-MM-yyyy').format(date)}",
               style: const TextStyle(fontSize: 16),
             ),
           ),
@@ -269,7 +266,7 @@ class HomeScreen extends StatelessWidget {
               boxShape: NeumorphicBoxShape.circle(),
               depth: 4,
             ),
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(8),
             child: const Icon(Icons.calendar_today, size: 20),
           ),
         ],
@@ -277,7 +274,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  String _nextBirthdayText(HomeController c) {
+  String _nextBirthdayText(AgeController c) {
     final now = c.currentDate;
     DateTime nextBirthday = DateTime(now.year, c.dateOfBirth.month, c.dateOfBirth.day,
         c.dateOfBirth.hour, c.dateOfBirth.minute, c.dateOfBirth.second);
